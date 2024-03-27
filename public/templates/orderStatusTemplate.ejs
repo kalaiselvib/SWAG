@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+   
+    <style>
+    html { -webkit-print-color-adjust: exact; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .order-table-container {
+        width: 100%;
+        margin-top: 1rem;
+      
+      }
+      #orderStatusTable {
+        border-collapse: collapse;
+        width: 100%;
+      
+      }
+      #orderStatusTable .top-header {
+        background: linear-gradient(to right, #ba0101, #5d0101);
+        color: #fff;
+        font-size: 25px;
+      }
+      #orderStatusTable td,
+      #orderStatusTable th {
+        border-bottom: 1px solid #ddd;
+        padding: 25px;
+        text-align: left;
+      }
+      #orderStatusTable th {
+        padding-top: 30px;
+        padding-bottom: 15px;
+        font-weight: 400;
+        color: #a2a0a0;
+        font-weight: 300;
+      }
+      #orderStatusTable tr th:nth-child(2) {
+        text-align: left;
+      }
+      #orderStatusTable tr td:nth-child(2) {
+        text-transform: uppercase;
+        display: flex;
+        gap: 15px;
+        position: relative;
+      }
+      #orderStatusTable tr td .customisation {
+        font-size: 12px;
+        text-transform: capitalize;
+      }
+      #orderStatusTable tr td .customisation .cs-value{
+      font-weight: 600;
+      }
+      #orderStatusTable tr td:nth-child(2) img {
+        height: 40px;
+      }
+      #orderStatusTable tr td:nth-child(4) {
+        text-align: right;
+      }
+      #orderStatusTable tfoot td {
+        text-align: right;
+        border: none;
+        font-weight: 600;
+        background-color: #353c4f;
+        color: #fff;
+      }
+      .final-price span {
+        font-size: 20px;
+        color: #a2a0a0;
+        margin-right: 20px;
+        font-weight: 400;
+        float: right;
+      }
+      .final-price .text {
+        font-size: 23px;
+        color: #fff;
+      }
+      .greetings-text {
+        margin: 1rem 0rem;
+        font-size: 19px;
+      }
+      .status-message{
+        font-size: 19px;
+      }
+      .m-1 {
+        margin: 1rem 0;
+      }
+      .text-center{
+        text-align: center;
+      }
+      .order-status-message {
+        font-size: 19px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="greetings-text">Hey,  <%= emailContent?.employeeName %></div>
+    <div class="order-status-message m-1">
+      <p>Thank your for your purchase!. We are happy to let you know that we've recieved your order and will contact you as soon as your package is ready</p>
+      <p class="order-status-message m-1">You can find your order information below </p>
+    </div>
+   
+    <div class="order-table-container">
+      <table class="table w-100" id="orderStatusTable">
+        <thead>
+          <tr style="text-align: left;  background-color: #ba0101" >
+            <th colspan="4" class="top-header">
+              CDW SWAG
+            </th>
+          </tr>
+          <tr>
+            <th style="width: 15%">#</th>
+            <th>Product</th>
+            <th style="width: 15%">Quantity</th>
+            <th style="width: 15%; text-align: right">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (emailContent?.orders.length> 0) { %>
+            <% emailContent?.orders.forEach(order=> {%>
+              <tr>
+                <td><%= order.orderId %></td>
+                <td>
+                  <div>
+                    <p><%= order?.productDetails?.title %></p>
+                    <% if (emailContent?.customisation) { %>
+                      <p class="customisation">Size : <span class="cs-value"><%= emailContent?.customisation?.size %></span></p>
+                    <% }%>
+                  </div>
+                </td>
+                <td class="text-center"><%= order.quantity %></td>
+                <td style="text-align: right"><%= order?.productDetails?.rewardPoints %></td>
+              </tr>
+                <% });%>
+                <% }%>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="final-price">
+              <span>Total Price: <%= emailContent?.totalCost %></span> 
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>           
+  </body>
+</html>

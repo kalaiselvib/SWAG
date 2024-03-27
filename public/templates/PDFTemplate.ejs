@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Coupons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <style>
+        html { -webkit-print-color-adjust: exact; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10vh;
+            height: 100vh;
+            width: 100vw;
+            font-family: serif;
+            font-size: large;
+            font-weight: 500;
+        }
+
+      
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .coupon {
+        height: 300px;
+        width: 600px;
+        margin:  3rem auto;
+        background-color: #2c2c36;
+        position: relative;
+        overflow: hidden;
+
+      }
+     .coupon img {
+        height: 70%;
+        position: absolute;
+        top: -6%;
+    left: -13%;
+        transform: rotateZ(-45deg);
+     }
+     .details {
+        background: linear-gradient(to right, #ba0101, #5d0101);
+     }
+    .reward-amount {
+    
+    }
+    .hero {
+        /* border-right: 6px solid #f4b05e; */
+        position: absolute;
+    right: 33%;
+    color: #fff;
+    top: 19%;
+    }
+    .details {
+        float: right;
+        width: 30%;
+        height: 100%;
+
+    }
+    .logo {
+        height: 33%;
+    }
+    .reward-amount {
+        font-size: 3rem;
+        color: #fff;
+        font-size: 3rem;
+        padding: 1rem;
+        letter-spacing: 2px;
+        text-align: center;
+        font-family: "Rubik", sans-serif;
+    }
+    .hero {
+    position: absolute;
+    right: 34%;
+    color: #fff;
+    }
+    .hero-text span{
+        font-size: 3rem;
+    font-family: "Rubik", sans-serif;
+    position: absolute;
+    right: 0%;
+    top: -19%;
+    }
+    .hero-text h2 {
+    font-family: "Great Vibes", cursive;
+    color: #f5b163;
+    font-size: 5rem;
+    letter-spacing: 6px;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 2rem;
+    }
+    .code-details {
+        position: absolute;
+    bottom: 0px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    color: #c7ceca;
+    }
+    .code-value {
+        display: flex;
+        flex-direction: column;
+        font-family: "Rubik", sans-serif;
+    justify-content: center;
+    letter-spacing: 1px;
+    padding: 1rem;
+    }
+    .code-value .info-text {
+        text-transform: uppercase;
+        font-size: 11px;
+        margin-bottom: 0.5rem;
+        color: #b62f19;
+    }
+    .code-value .info-text span {
+        color: #c7ceca;
+    }
+    .info-text + p {
+        font-family: sans-serif;
+    }
+    .border-right {
+        border-right: 2px solid #91483c;
+    }
+    </style>
+</head>
+
+<body>
+    <% if (rewards.length> 0) { %>
+        <% rewards.forEach(reward=> {%>
+            <div class="coupon-code">
+                <div class="coupon">
+                    <img src=<%= ribbonImagePath %> alt="">
+                    <div class="hero">
+                    <div class="hero-text">
+                        <span>Gift</span>
+                        <h2>Voucher</h2>
+                    </div>
+                    </div>
+                    <div class="code-details">
+                       <div class="code-value border-right">
+                        <p class="info-text">Coupon  <span>Code :</span> </p>
+                        <p> <%= reward.couponCode %></p>
+                       </div>
+                       <div class="code-value">
+                        <p class="info-text">Secret <span> Key :</span> </p>
+                        <p><%= reward.secretCode %></p>
+                       </div>
+                    </div>
+                    <div class="details">
+                        <div class="logo">
+                            <img src="" alt="">
+                        </div>
+                        <div class="reward-amount">
+                            <%= reward.rewardPoints %>
+                        </div>
+                    </div>
+                </div>
+               </div>
+            <% });%>
+                <% }%>
+               
+</body>
+
+</html>

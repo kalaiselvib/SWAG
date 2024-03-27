@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Coupons</title>
+    <style>
+        html { -webkit-print-color-adjust: exact; }
+        body {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+<pre>Hi <%= rewardeeName %>,
+
+    Congrats! You've got a coupon amount of <b><%= reward.rewardPoints %></b> for <%=
+        reward.description
+    %> on <%= reward.rewardCategory?.name %>!
+<pre>    PFA the secret code for your reward.
+
+    The PDF can be unlocked by entering your employee ID followed by an underscore and the suffix "SWAG" in uppercase.
+
+    For example, if your your employeeId is 1000, then your password would be "1000_SWAG".
+
+    Use the coupon code physically given to you.
+    <%=
+    reward.couponCode
+        ? `In case you lost it, kindly find your coupon code below:
+    ${reward.couponCode}`
+        : ""
+        %>
+</pre></pre>
+<pre>Thanks, 
+CDW SWAG.<img src="cid:logo" width="50" alt="swag logo"></pre></pre>
+</body>
+
+</html>
