@@ -5,6 +5,7 @@
 	"repository": "https://github.com/cdw-india-se/cdw-swag-be.git",
 	"author": "",
 	"license": "MIT",
+	"type": "module",
 	"scripts": {
 		"dev": "ts-node-dev --respawn --rs src/index.ts",
 		"start:prod": "node build/index.js",
